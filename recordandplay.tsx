@@ -15,14 +15,6 @@ import { useAudio } from "./src/audio/AudioContext";
 const RECORD_START_URI = Image.resolveAssetSource(record_start)?.uri;
 const RECORD_END_URI = Image.resolveAssetSource(record_end)?.uri;
 
-/** Let `record_start` play before the mic session starts; otherwise `startRecorder` preempts it. */
-const RECORD_START_LEAD_MS = 320;
-
-const delay = (ms: number) =>
-	new Promise<void>((resolve) => {
-		setTimeout(resolve, ms);
-	});
-
 export function RecordAndPlay() {
 	const { recorder, player } = useAudio();
 	const rec = recorder.state;
